@@ -46,7 +46,7 @@ class DnspodClient(object):
 
     session = requests.session()
     ttl = 600
-    endpoint = "https://dnsapi.cn"
+    endpoint = "https://api.dnspod.com"
 
     def __init__(self, email=None, token=None):
         self.common_params = {}
@@ -69,7 +69,7 @@ class DnspodClient(object):
             })
         if token is not None:
             self.common_params = dict(
-                login_token=token, format="json",
+                user_token=token, format="json",
                 lang="en", error_on_empty="no",
             )
 
@@ -92,7 +92,7 @@ class DnspodClient(object):
                 "domain": domain,
                 "sub_domain": sub_domain,
                 "record_type": u"TXT",
-                "record_line": u"默认",
+                "record_line": u"default",
                 "value": value,
                 "ttl": self.ttl
             }
